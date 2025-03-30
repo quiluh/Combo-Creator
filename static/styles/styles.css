@@ -7,5 +7,6 @@
     --primaryC: #6B8F71;
 }
 body {
+    background-color: var(--primaryLight);
     line-height: 1.3;
 }
