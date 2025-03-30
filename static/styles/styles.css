@@ -1,3 +1,11 @@
+:root {
+    --primaryDark: #1D1E18;
+    --primaryLight: #D9FFF5;
+
+    --primaryA: #B9F5D8;
+    --primaryB: #AAD2BA;
+    --primaryC: #6B8F71;
+}
 body {
     line-height: 1.3;
 }
