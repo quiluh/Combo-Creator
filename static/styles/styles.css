@@ -20,6 +20,9 @@ body {
     flex-direction: row;
     align-items: stretch;
 }
+.textCenter {
+    text-align: center;
+}
 .comboContainer {
     background-color: var(--primaryB);
 }
