@@ -53,3 +53,8 @@ body {
 .hiddenCheckbox:checked + .keyButton {
     filter: brightness(180%);
 }
+input[type="text"] {
+    width: 90%;
+    padding: 3%;
+    margin: 3%;
+}
