@@ -44,6 +44,7 @@ body {
     cursor: pointer;
     transition-duration: 0.2s;
     user-select: none;
+    width: 50%;
 }
 .keyButton:hover {
     transform: scale(1.1);
