@@ -45,6 +45,7 @@ body {
     transition-duration: 0.2s;
     user-select: none;
     width: 50%;
+    font-size: calc(1.2vh + 1.5vw);
 }
 .keyButton:hover {
     transform: scale(1.1);
