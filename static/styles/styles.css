@@ -32,6 +32,7 @@ body {
 }
 .hiddenCheckbox {
     display: none;
+    user-select: none;
 }
 .keyButton {
     background-color: var(--primaryC);
@@ -42,6 +43,7 @@ body {
     color: var(--primaryText);
     cursor: pointer;
     transition-duration: 0.2s;
+    user-select: none;
 }
 .keyButton:hover {
     transform: scale(1.1);
