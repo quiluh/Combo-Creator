@@ -46,3 +46,6 @@ body {
 .keyButton:hover {
     transform: scale(1.1);
 }
+.hiddenCheckbox:checked + .keyButton {
+    filter: brightness(180%);
+}
