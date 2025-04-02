@@ -79,4 +79,12 @@ input[type="text"] {
     padding: 3%;
     margin: 3%;
     text-align: center;
+    background-color: var(--primaryLight);
+    border: none;
+    border-radius: 0.2rem;
+    transition-duration: 0.2s;
+}
+input[type="text"]:focus {
+    outline: none;
+    filter: brightness(110%);
 }
