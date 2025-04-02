@@ -16,6 +16,9 @@ h1,h2,h3,h4,p {
 h1 {
     font-size: calc(2vh + 2.2vw);
 }
+p {
+    font-size: calc(1vh + 1.5vw);
+}
 button {
     background-color: var(--primaryC);
     padding: 4%;
