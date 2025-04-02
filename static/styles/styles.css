@@ -46,6 +46,9 @@ button:hover {
 }
 .comboContainer {
     background-color: var(--primaryB);
+    border-radius: 0.25rem;
+    padding: 2%;
+    margin: 1%;
 }
 .hiddenCheckbox {
     display: none;
