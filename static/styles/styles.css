@@ -16,6 +16,17 @@ h1,h2,h3,h4,p {
 h1 {
     font-size: calc(2vh + 2.2vw);
 }
+h1[contentEditable="true"] {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+h1[contentEditable="true"]:focus {
+    outline-color: var(--primaryDark);
+    filter: brightness(120%);
+    cursor: text;
+}
 p {
     font-size: calc(1vh + 1.5vw);
 }
