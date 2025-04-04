@@ -2,7 +2,7 @@
     --primaryDark: #1D1E18;
     --primaryLight: #D9FFF5;
 
-    --secondaryB: #738f7e;
+    --secondaryB: #BAD2BA;
 
     --primaryA: #B9F5D8;
     --primaryB: #AAD2BA;
@@ -74,7 +74,7 @@ button:hover {
     transition-duration: 0.5s;
 }
 .comboContainer[comboImplemented="true"] {
-    background-color: ;
+    background-color: var(--secondaryB);
 }
 .hiddenCheckbox {
     display: none;
