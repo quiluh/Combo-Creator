@@ -1,5 +1,7 @@
 var currentID = 1;
 
+var trackedCombos = {}
+
 function implement(id) {
 
     let data = {
@@ -22,6 +24,12 @@ function implement(id) {
         data: JSON.stringify({"data":data}),
         success: function(response) {
             alert("Implemented!");
+
+            if (trackedCombos.hasOwnProperty(`${id}`)) {
+                trackedCombos.id = !trackedCombos.id;
+            } else {
+                trackedCombos.id = true;
+            }
         },
         error: function(error) {
             console.log(error);
