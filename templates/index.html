@@ -7,6 +7,61 @@
     <title>Combo Creator</title>
 </head>
 <body>
+    <div class="comboContainer" comboImplemented="false" id="1">
+        <div class="textCenter">
+            <h1 contenteditable="true">Input Name</h1>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <input type="checkbox" id="leftControl1" class="hiddenCheckbox">
+                    <label for="leftControl1" class="keyButton">CTRL</label>
+                    <input type="checkbox" id="leftShift1" class="hiddenCheckbox">
+                    <label for="leftShift1" class="keyButton">SHIFT</label>
+                </div>
+                <div class="row">
+                    <input type="checkbox" id="leftAlt" class="hiddenCheckbox">
+                    <label for="leftAlt" class="keyButton">ALT</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <label for="outputText">
+                        <p>Input Text</p>
+                    </label>
+                </div>
+                <div class="row textKeys">
+                    <input type="text" id="inputText1" autocomplete="off">
+                </div>
+                <div class="row">
+                    <label for="outputText">
+                        <p>Output Text</p>
+                    </label>
+                </div>
+                <div class="row textKeys">
+                    <input type="text" id="outputText1" autocomplete="off">
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <input type="checkbox" id="rightControl1" class="hiddenCheckbox">
+                    <label for="rightControl1" class="keyButton">CTRL</label>
+                    <input type="checkbox" id="rightShift1" class="hiddenCheckbox">
+                    <label for="rightShift1" class="keyButton">SHIFT</label>
+                </div>
+                <div class="row">
+                    <input type="checkbox" id="rightAlt" class="hiddenCheckbox">
+                    <label for="rightAlt" class="keyButton">ALT</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button onclick="implement(1)">Implement</button>
+        </div>
+    </div>
+    <div class="row">
+        <button onclick="newCombo()">+</button>
+    </div>
     <script src="{{ url_for('static',filename='scripts/script.js') }}"></script>
 </body>
 </html>
