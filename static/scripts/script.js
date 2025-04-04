@@ -23,15 +23,14 @@ function implement(id) {
         contentType: "application/json",
         data: JSON.stringify({"data":data}),
         success: function(response) {
-            alert("Implemented!");
 
             if (trackedCombos.hasOwnProperty(`${id}`)) {
-                trackedCombos.id = !trackedCombos.id;
+                trackedCombos[id] = !trackedCombos[id];
             } else {
-                trackedCombos.id = true;
+                trackedCombos[id] = true;
             }
 
-            document.getElementById(`${id}`).setAttribute("comboImplemented",trackedCombos.id ? "true" : "false");
+            document.getElementById(`${id}`).setAttribute("comboImplemented",trackedCombos[id] ? "true" : "false");
         },
         error: function(error) {
             console.log(error);
