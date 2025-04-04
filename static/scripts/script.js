@@ -40,10 +40,9 @@ function implement(id) {
 
 function newCombo() {
 
-    let createElement = function(elementType,attributes,classList,id) {
-
+    let createElement = function(tagName,attributes,classList,id) {
         // CREATE ELEMENT
-        let element = document.createElement(elementType);
+        let element = document.createElement(tagName);
 
         // SET ATTRIBUTES
         if (Object.keys(attributes) != null) {
@@ -65,5 +64,34 @@ function newCombo() {
         }
 
         return element;
+    }
+
+    currentID++;
+
+    let saveElement = function(element) {
+        return {
+            tagName:element.tagName.toLowerCase(),
+            classList:element.classList,
+            id:element.id,
+            attributes: ((element) => {
+                let attributeObject = {};
+
+                for (let i of element.attributes) {
+                    attributeObject[i.name] = i.value;
+                }
+
+                return attributeObject;
+            })(),
+
+            children: ((element) => {
+                childrenArray = [];
+
+                for (let i = 0; i < element.children.length; i++) {
+                    childrenArray.push(saveElement(element.children[i]));
+                }
+
+                return childrenArray;
+            })()
+        }
     }
 }
