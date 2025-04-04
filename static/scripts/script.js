@@ -2,6 +2,35 @@ var currentID = 1;
 
 var trackedCombos = {}
 
+function saveElement(element) {
+    return {
+        tagName:element.tagName.toLowerCase(),
+        classList:element.classList,
+        id:element.id,
+        attributes: ((element) => {
+            let attributeObject = {};
+
+            for (let i of element.attributes) {
+                attributeObject[i.name] = i.value;
+            }
+
+            return attributeObject;
+        })(),
+
+        children: ((element) => {
+            childrenArray = [];
+
+            for (let i = 0; i < element.children.length; i++) {
+                childrenArray.push(saveElement(element.children[i]));
+            }
+
+            return childrenArray;
+        })()
+    }
+}
+
+var comboContainer = saveElement(document.getElementById("1"));
+
 function implement(id) {
 
     let data = {
@@ -67,31 +96,4 @@ function newCombo() {
     }
 
     currentID++;
-
-    let saveElement = function(element) {
-        return {
-            tagName:element.tagName.toLowerCase(),
-            classList:element.classList,
-            id:element.id,
-            attributes: ((element) => {
-                let attributeObject = {};
-
-                for (let i of element.attributes) {
-                    attributeObject[i.name] = i.value;
-                }
-
-                return attributeObject;
-            })(),
-
-            children: ((element) => {
-                childrenArray = [];
-
-                for (let i = 0; i < element.children.length; i++) {
-                    childrenArray.push(saveElement(element.children[i]));
-                }
-
-                return childrenArray;
-            })()
-        }
-    }
 }
