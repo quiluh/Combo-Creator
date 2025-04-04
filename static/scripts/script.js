@@ -1,6 +1,7 @@
 var currentID = 1;
 
 function implement(id) {
+
     let data = {
         leftControl: document.getElementById(`leftControl${id}`).checked,
         leftShift: document.getElementById(`leftShift${id}`).checked,
@@ -13,4 +14,17 @@ function implement(id) {
         rightShift: document.getElementById(`rightShift${id}`).checked,
         rightAlt: document.getElementById(`rightAlt${id}`).checked,
     }
+
+    $.ajax({
+        url: "/processImplementation",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({"data":data}),
+        success: function(response) {
+            alert("Implemented!");
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    })
 }
