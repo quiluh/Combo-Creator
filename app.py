@@ -12,5 +12,9 @@ def Index():
 def PortHome():
     return redirect("/index")
 
+@app.route("/processImplementation",methods=["POST"])
+def ProcessImplementation():
+    data = request.get_json()
+
 if __name__ == "__main__":
     app.run()
