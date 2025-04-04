@@ -30,6 +30,8 @@ function implement(id) {
             } else {
                 trackedCombos.id = true;
             }
+
+            document.getElementById(`${id}`).setAttribute("comboImplemented",trackedCombos.id ? "true" : "false");
         },
         error: function(error) {
             console.log(error);
