@@ -2,6 +2,12 @@ var currentID = 1;
 
 var trackedCombos = {}
 
+var comboContainer;
+
+$(document).ready(function() {
+    comboContainer = saveElement(document.getElementById("1"));
+})
+
 function saveElement(element) {
     return {
         tagName:element.tagName.toLowerCase(),
@@ -28,8 +34,6 @@ function saveElement(element) {
         })()
     }
 }
-
-var comboContainer = saveElement(document.getElementById("1"));
 
 function implement(id) {
 
