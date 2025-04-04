@@ -37,3 +37,33 @@ function implement(id) {
         }
     })
 }
+
+function newCombo() {
+
+    let createElement = function(elementType,attributes,classList,id) {
+
+        // CREATE ELEMENT
+        let element = document.createElement(elementType);
+
+        // SET ATTRIBUTES
+        if (Object.keys(attributes) != null) {
+            for (let i = 0; i < Object.keys(attributes).length; i++) {
+                element.setAttribute(Object.keys(attributes)[i],attributes[Object.keys(attributes)[i]]);
+            }
+        }
+
+        // ADD CLASSES
+        if (classList != null) {
+            for (let i = 0; i < classList.length; i++) {
+                element.classList.add(classList[i]);
+            }
+        }
+
+        // ADD ID
+        if (element.id != null) {
+            element.id = id;
+        }
+
+        return element;
+    }
+}
