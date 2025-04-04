@@ -96,4 +96,24 @@ function newCombo() {
     }
 
     currentID++;
+
+    let newCombo = createElement(
+        comboContainer["tagName"],
+        comboContainer["attributes"],
+        comboContainer["classList"],
+        currentID
+    );
+
+    for (let i = 0; i < comboContainer["children"].length; i++) {
+        newCombo.appendChild(
+            createElement(
+                comboContainer["children"][i]["tagName"],
+                comboContainer["children"][i]["attributes"],
+                comboContainer["children"][i]["classList"],
+                comboContainer["children"][i]["id"]
+            )
+        );
+    }
+
+    document.getElementById("comboRow").appendChild(newCombo);
 }
