@@ -101,7 +101,7 @@ function newCombo() {
         comboContainer["tagName"],
         comboContainer["attributes"],
         comboContainer["classList"],
-        currentID
+        `${currentID}`
     );
 
     for (let i = 0; i < comboContainer["children"].length; i++) {
