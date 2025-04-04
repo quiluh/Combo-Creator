@@ -4,9 +4,10 @@ var trackedCombos = {}
 
 var comboContainer;
 
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     comboContainer = saveElement(document.getElementById("1"));
-})
+    console.log(comboContainer)
+});
 
 function saveElement(element) {
     return {
