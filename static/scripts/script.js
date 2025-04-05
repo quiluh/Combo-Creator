@@ -6,7 +6,6 @@ var comboContainer;
 
 document.addEventListener('DOMContentLoaded', function() {
     comboContainer = saveElement(document.getElementById("1"));
-    console.log(comboContainer)
 });
 
 function saveElement(element) {
@@ -103,19 +102,19 @@ function newCombo() {
     currentID++;
 
     let newCombo = createElement(
-        comboContainer["tagName"],
-        comboContainer["attributes"],
-        comboContainer["classList"],
+        comboContainer.tagName,
+        comboContainer.attributes,
+        comboContainer.classList,
         `${currentID}`
     );
 
     for (let i = 0; i < comboContainer["children"].length; i++) {
         newCombo.appendChild(
             createElement(
-                comboContainer["children"][i]["tagName"],
-                comboContainer["children"][i]["attributes"],
-                comboContainer["children"][i]["classList"],
-                comboContainer["children"][i]["id"]
+                comboContainer["children"][i].tagName,
+                comboContainer["children"][i].attributes,
+                comboContainer["children"][i].classList,
+                comboContainer["children"][i].id
             )
         );
     }
