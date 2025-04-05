@@ -81,13 +81,13 @@ function newCombo() {
         // SET ATTRIBUTES
         if (attributes != null) {
             for (let i = 0; i < Object.keys(attributes).length; i++) {
-                element.setAttribute(Object.keys(attributes)[i],attributes[Object.keys(attributes)[i]]);
+                element.setAttribute(Object.keys(attributes)[i],attributes[Object.keys(attributes)[i]].replace("1",`${currentID}`));
             }
         }
 
         // ADD ID
         if (id != null) {
-            element.id = id;
+            element.id = id.replace("1",`${currentID}`);
         }
 
         // ADD CONTENT
