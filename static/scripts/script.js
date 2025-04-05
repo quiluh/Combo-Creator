@@ -99,7 +99,6 @@ function newCombo() {
     let newCombo = createElement(
         comboContainer.tagName,
         comboContainer.attributes,
-        comboContainer.classList,
         `${currentID}`,
         comboContainer.children
     );
