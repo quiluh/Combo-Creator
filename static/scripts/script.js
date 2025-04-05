@@ -17,6 +17,8 @@ function saveElement(element) {
             return attributeObject;
         })(),
 
+        id:element.id,
+
         children: (() => {
             let childrenArray = [];
 
