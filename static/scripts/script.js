@@ -118,5 +118,5 @@ function newCombo() {
         );
     }
 
-    document.getElementById("comboRow").appendChild(newCombo);
+    document.getElementById("comboCol").appendChild(newCombo);
 }
