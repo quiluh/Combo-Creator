@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function implement(id) {
 
     let data = {
+        id: id,
+        
         leftControl: document.getElementById(`leftControl${id}`).checked,
         leftShift: document.getElementById(`leftShift${id}`).checked,
         leftAlt: document.getElementById(`leftAlt${id}`).checked,
