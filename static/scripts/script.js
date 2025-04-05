@@ -5,35 +5,60 @@ var trackedCombos = {}
 var comboContainer;
 
 document.addEventListener('DOMContentLoaded', function() {
-    comboContainer = saveElement(document.getElementById("1"));
-});
-
-function saveElement(element) {
-    return {
-        tagName:element.tagName.toLowerCase(),
-        classList:element.classList,
-        id:element.id,
-        attributes: ((element) => {
-            let attributeObject = {};
-
-            for (let i of element.attributes) {
-                attributeObject[i.name] = i.value;
-            }
-
-            return attributeObject;
-        })(),
-
-        children: ((element) => {
-            childrenArray = [];
-
-            for (let i = 0; i < element.children.length; i++) {
-                childrenArray.push(saveElement(element.children[i]));
-            }
-
-            return childrenArray;
-        })()
+    var saveElement = function(element) {
+        return {
+            tagName:element.tagName.toLowerCase(),
+            classList:element.classList,
+            id:element.id,
+            attributes: ((element) => {
+                let attributeObject = {};
+    
+                for (let i of element.attributes) {
+                    attributeObject[i.name] = i.value;
+                }
+    
+                return attributeObject;
+            })(),
+    
+            children: ((element) => {
+                childrenArray = [];
+    
+                for (let i = 0; i < element.children.length; i++) {
+                    childrenArray.push(saveElement(element.children[i]));
+                }
+    
+                return childrenArray;
+            })()
+        }
     }
-}
+    comboContainer = (() => {
+        let element = document.getElementById("1");
+        return {
+            tagName:element.tagName.toLowerCase(),
+            classList:element.classList,
+            id:element.id,
+            attributes: ((element) => {
+                let attributeObject = {};
+    
+                for (let i of element.attributes) {
+                    attributeObject[i.name] = i.value;
+                }
+    
+                return attributeObject;
+            })(),
+    
+            children: ((element) => {
+                childrenArray = [];
+    
+                for (let i = 0; i < element.children.length; i++) {
+                    childrenArray.push(saveElement(element.children[i]));
+                }
+    
+                return childrenArray;
+            })()
+        }
+    });
+});
 
 function implement(id) {
 
