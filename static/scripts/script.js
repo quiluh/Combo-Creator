@@ -70,7 +70,7 @@ function implement(id) {
 
 function newCombo() {
 
-    let createElement = function(tagName,attributes,classList,id) {
+    let createElement = function(tagName,attributes,id,children) {
         // CREATE ELEMENT
         let element = document.createElement(tagName);
 
@@ -81,16 +81,14 @@ function newCombo() {
             }
         }
 
-        // ADD CLASSES
-        if (classList != null) {
-            for (let i = 0; i < classList.length; i++) {
-                element.classList.add(classList[i]);
-            }
-        }
-
         // ADD ID
         if (element.id != null) {
             element.id = id;
+        }
+
+        // ADD CHILDREN
+        for (let i = 0; i < children.length; i++) {
+            element.appendChild(createElement(i.tagName,i.attributes,i.classList,i.id,i.children));
         }
 
         return element;
@@ -102,19 +100,9 @@ function newCombo() {
         comboContainer.tagName,
         comboContainer.attributes,
         comboContainer.classList,
-        `${currentID}`
+        `${currentID}`,
+        comboContainer.children
     );
-
-    for (let i = 0; i < comboContainer["children"].length; i++) {
-        newCombo.appendChild(
-            createElement(
-                comboContainer["children"][i].tagName,
-                comboContainer["children"][i].attributes,
-                comboContainer["children"][i].classList,
-                comboContainer["children"][i].id
-            )
-        );
-    }
 
     document.getElementById("comboRow").appendChild(newCombo);
 }
