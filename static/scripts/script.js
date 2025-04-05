@@ -4,31 +4,32 @@ var trackedCombos = {}
 
 var comboContainer;
 
-document.addEventListener('DOMContentLoaded', function() {
-    var saveElement = function(element) {
-        return {
-            tagName:element.tagName.toLowerCase(),
-            attributes: (() => {
-                let attributeObject = {};
-    
-                for (let i = 0; i < element.attributes.length; i++) {
-                    attributeObject[element.attributes[i].name] = element.attributes[i].value
-                }
-    
-                return attributeObject;
-            })(),
-    
-            children: (() => {
-                childrenArray = [];
-    
-                for (let i = 0; i < element.children.length; i++) {
-                    childrenArray.push(saveElement(element.children[i]));
-                }
-    
-                return childrenArray;
-            })()
-        }
+function saveElement(element) {
+    return {
+        tagName:element.tagName.toLowerCase(),
+        attributes: (() => {
+            let attributeObject = {};
+
+            for (let i = 0; i < element.attributes.length; i++) {
+                attributeObject[element.attributes[i].name] = element.attributes[i].value
+            }
+
+            return attributeObject;
+        })(),
+
+        children: (() => {
+            childrenArray = [];
+
+            for (let i = 0; i < element.children.length; i++) {
+                childrenArray.push(saveElement(element.children[i]));
+            }
+
+            return childrenArray;
+        })()
     }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
     comboContainer = saveElement(document.getElementById("1"));
 });
 
@@ -97,8 +98,6 @@ function newCombo() {
     }
 
     currentID++;
-
-    console.log(comboContainer)
 
     let newCombo = createElement(
         comboContainer.tagName,
