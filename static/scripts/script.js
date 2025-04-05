@@ -19,6 +19,8 @@ function saveElement(element) {
 
         id:element.id,
 
+        textContent: element.children.length === 0 ? element.textContent : null,
+
         children: (() => {
             let childrenArray = [];
 
@@ -72,7 +74,7 @@ function implement(id) {
 
 function newCombo() {
 
-    let createElement = function(tagName,attributes,id,children) {
+    let createElement = function(tagName,attributes,id,children,textContent) {
         // CREATE ELEMENT
         let element = document.createElement(tagName);
 
@@ -88,6 +90,11 @@ function newCombo() {
             element.id = id;
         }
 
+        // ADD CONTENT
+        if (textContent && (!children || children.length === 0)) {
+            element.textContent = textContent;
+        }
+
         // ADD CHILDREN
         if (children != null) {
             for (let i = 0; i < children.length; i++) {
@@ -95,7 +102,8 @@ function newCombo() {
                 let childAttributes = (children[i].attributes) ? children[i].attributes : null;
                 let childId = (children[i].id) ? children[i].id : null;
                 let childChildren = (children[i].children) ? children[i].children : null;
-                element.appendChild(createElement(childTagName,childAttributes,childId,childChildren));
+                let childContent = (children[i].textContent) ? children[i].textContent : null;
+                element.appendChild(createElement(childTagName,childAttributes,childId,childChildren,childContent));
             }
         }
 
