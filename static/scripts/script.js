@@ -5,6 +5,7 @@ var trackedCombos = {}
 var comboContainer;
 
 function saveElement(element) {
+    console.log(element)
     return {
         tagName:element.tagName.toLowerCase(),
         attributes: (() => {
@@ -77,20 +78,27 @@ function newCombo() {
         let element = document.createElement(tagName);
 
         // SET ATTRIBUTES
-        if (Object.keys(attributes) != null) {
+        if (attributes != null) {
             for (let i = 0; i < Object.keys(attributes).length; i++) {
                 element.setAttribute(Object.keys(attributes)[i],attributes[Object.keys(attributes)[i]]);
             }
         }
 
         // ADD ID
-        if (element.id != null) {
+        if (id != null) {
             element.id = id;
         }
 
         // ADD CHILDREN
-        for (let i = 0; i < children.length; i++) {
-            element.appendChild(createElement(i.tagName,i.attributes,i.classList,i.id,i.children));
+        if (children != null) {
+            for (let i = 0; i < children.length; i++) {
+                let tagName = (i.tagName) ? i.tagName : null;
+                let attributes = (i.attributes) ? i.attributes : null;
+                let classList = (i.classList) ? i.classList : null;
+                let id = (i.id) ? i.id : null;
+                let children = (i.children) ? i.children : null;
+                element.appendChild(createElement(tagName,attributes,classList,id,children));
+            }
         }
 
         return element;
