@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return childrenArray;
             })()
         }
-    });
+    })();
 });
 
 function implement(id) {
@@ -126,23 +126,26 @@ function newCombo() {
 
     currentID++;
 
-    let newCombo = createElement(
-        comboContainer.tagName,
-        comboContainer.attributes,
-        comboContainer.classList,
-        `${currentID}`
-    );
+    console.log(comboContainer)
 
-    for (let i = 0; i < comboContainer["children"].length; i++) {
-        newCombo.appendChild(
-            createElement(
-                comboContainer["children"][i].tagName,
-                comboContainer["children"][i].attributes,
-                comboContainer["children"][i].classList,
-                comboContainer["children"][i].id
-            )
-        );
-    }
+    // let newCombo = createElement(
+    //     comboContainer.tagName,
+    //     comboContainer.attributes,
+    //     comboContainer.classList,
+    //     `${currentID}`
+    // );
 
-    document.getElementById("comboRow").appendChild(newCombo);
+    // for (let i = 0; i < comboContainer["children"].length; i++) {
+    //     console.log(comboContainer["children"][i])
+    //     newCombo.appendChild(
+    //         createElement(
+    //             comboContainer["children"][i].tagName,
+    //             comboContainer["children"][i].attributes,
+    //             comboContainer["children"][i].classList,
+    //             comboContainer["children"][i].id
+    //         )
+    //     );
+    // }
+
+    // document.getElementById("comboRow").appendChild(newCombo);
 }
