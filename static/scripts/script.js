@@ -92,11 +92,11 @@ function newCombo() {
         // ADD CHILDREN
         if (children != null) {
             for (let i = 0; i < children.length; i++) {
-                let childTagName = (i.tagName) ? i.tagName : null;
-                let childAttributes = (i.attributes) ? i.attributes : null;
-                let childClassList = (i.classList) ? i.classList : null;
-                let childId = (i.id) ? i.id : null;
-                let childChildren = (i.children) ? i.children : null;
+                let childTagName = (children[i].tagName) ? children[i].tagName : null;
+                let childAttributes = (children[i].attributes) ? children[i].attributes : null;
+                let childClassList = (children[i].classList) ? children[i].classList : null;
+                let childId = (children[i].id) ? children[i].id : null;
+                let childChildren = (children[i].children) ? children[i].children : null;
                 element.appendChild(createElement(childTagName,childAttributes,childClassList,childId,childChildren));
             }
         }
