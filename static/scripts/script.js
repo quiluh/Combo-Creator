@@ -5,7 +5,6 @@ var trackedCombos = {}
 var comboContainer;
 
 function saveElement(element) {
-    console.log(element)
     return {
         tagName:element.tagName.toLowerCase(),
         attributes: (() => {
@@ -97,7 +96,7 @@ function newCombo() {
                 let childClassList = (children[i].classList) ? children[i].classList : null;
                 let childId = (children[i].id) ? children[i].id : null;
                 let childChildren = (children[i].children) ? children[i].children : null;
-                element.appendChild(createElement(childTagName,childAttributes,childClassList,childId,childChildren));
+                element.appendChild(createElement(childTagName,childAttributes,childId,childChildren));
             }
         }
 
