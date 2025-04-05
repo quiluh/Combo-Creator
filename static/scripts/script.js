@@ -8,17 +8,17 @@ document.addEventListener('DOMContentLoaded', function() {
     var saveElement = function(element) {
         return {
             tagName:element.tagName.toLowerCase(),
-            attributes: ((element) => {
+            attributes: (() => {
                 let attributeObject = {};
     
-                for (let i of element.attributes) {
-                    attributeObject[i.name] = i.value;
+                for (let i = 0; i < element.attributes.length; i++) {
+                    attributeObject[element.attributes[i].name] = element.attributes[i].value
                 }
     
                 return attributeObject;
             })(),
     
-            children: ((element) => {
+            children: (() => {
                 childrenArray = [];
     
                 for (let i = 0; i < element.children.length; i++) {
@@ -70,7 +70,7 @@ function implement(id) {
 
 function newCombo() {
 
-    let createElement = function(tagName,attributes) {
+    let createElement = function(tagName,attributes,classList,id) {
         // CREATE ELEMENT
         let element = document.createElement(tagName);
 
@@ -81,6 +81,18 @@ function newCombo() {
             }
         }
 
+        // ADD CLASSES
+        if (classList != null) {
+            for (let i = 0; i < classList.length; i++) {
+                element.classList.add(classList[i]);
+            }
+        }
+
+        // ADD ID
+        if (element.id != null) {
+            element.id = id;
+        }
+
         return element;
     }
 
@@ -88,24 +100,23 @@ function newCombo() {
 
     console.log(comboContainer)
 
-    // let newCombo = createElement(
-    //     comboContainer.tagName,
-    //     comboContainer.attributes,
-    //     comboContainer.classList,
-    //     `${currentID}`
-    // );
+    let newCombo = createElement(
+        comboContainer.tagName,
+        comboContainer.attributes,
+        comboContainer.classList,
+        `${currentID}`
+    );
 
-    // for (let i = 0; i < comboContainer["children"].length; i++) {
-    //     console.log(comboContainer["children"][i])
-    //     newCombo.appendChild(
-    //         createElement(
-    //             comboContainer["children"][i].tagName,
-    //             comboContainer["children"][i].attributes,
-    //             comboContainer["children"][i].classList,
-    //             comboContainer["children"][i].id
-    //         )
-    //     );
-    // }
+    for (let i = 0; i < comboContainer["children"].length; i++) {
+        newCombo.appendChild(
+            createElement(
+                comboContainer["children"][i].tagName,
+                comboContainer["children"][i].attributes,
+                comboContainer["children"][i].classList,
+                comboContainer["children"][i].id
+            )
+        );
+    }
 
-    // document.getElementById("comboRow").appendChild(newCombo);
+    document.getElementById("comboRow").appendChild(newCombo);
 }
