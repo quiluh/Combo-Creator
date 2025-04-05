@@ -93,7 +93,6 @@ function newCombo() {
             for (let i = 0; i < children.length; i++) {
                 let childTagName = (children[i].tagName) ? children[i].tagName : null;
                 let childAttributes = (children[i].attributes) ? children[i].attributes : null;
-                let childClassList = (children[i].classList) ? children[i].classList : null;
                 let childId = (children[i].id) ? children[i].id : null;
                 let childChildren = (children[i].children) ? children[i].children : null;
                 element.appendChild(createElement(childTagName,childAttributes,childId,childChildren));
