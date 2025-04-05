@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var saveElement = function(element) {
         return {
             tagName:element.tagName.toLowerCase(),
-            classList:element.classList,
-            id:element.id,
             attributes: ((element) => {
                 let attributeObject = {};
     
@@ -31,33 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })()
         }
     }
-    comboContainer = (() => {
-        let element = document.getElementById("1");
-        return {
-            tagName:element.tagName.toLowerCase(),
-            classList:element.classList,
-            id:element.id,
-            attributes: ((element) => {
-                let attributeObject = {};
-    
-                for (let i of element.attributes) {
-                    attributeObject[i.name] = i.value;
-                }
-    
-                return attributeObject;
-            })(),
-    
-            children: ((element) => {
-                childrenArray = [];
-    
-                for (let i = 0; i < element.children.length; i++) {
-                    childrenArray.push(saveElement(element.children[i]));
-                }
-    
-                return childrenArray;
-            })()
-        }
-    })();
+    comboContainer = saveElement(document.getElementById("1"));
 });
 
 function implement(id) {
@@ -98,7 +70,7 @@ function implement(id) {
 
 function newCombo() {
 
-    let createElement = function(tagName,attributes,classList,id) {
+    let createElement = function(tagName,attributes) {
         // CREATE ELEMENT
         let element = document.createElement(tagName);
 
@@ -107,18 +79,6 @@ function newCombo() {
             for (let i = 0; i < Object.keys(attributes).length; i++) {
                 element.setAttribute(Object.keys(attributes)[i],attributes[Object.keys(attributes)[i]]);
             }
-        }
-
-        // ADD CLASSES
-        if (classList != null) {
-            for (let i = 0; i < classList.length; i++) {
-                element.classList.add(classList[i]);
-            }
-        }
-
-        // ADD ID
-        if (element.id != null) {
-            element.id = id;
         }
 
         return element;
