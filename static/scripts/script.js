@@ -18,12 +18,11 @@ function saveElement(element) {
         })(),
 
         children: (() => {
-            childrenArray = [];
+            let childrenArray = [];
 
             for (let i = 0; i < element.children.length; i++) {
                 childrenArray.push(saveElement(element.children[i]));
             }
-
             return childrenArray;
         })()
     }
