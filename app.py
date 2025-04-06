@@ -2,6 +2,41 @@ from flask import Flask, render_template, request, jsonify, redirect
 
 app = Flask(__name__)
 
+class ICombo:
+    # COMBO INTERFACE
+
+    def __init__(self,id:int,keys:dict,inputText:str,outputText:str):
+        self._id = id
+        self._keys = keys
+        # SAVE INPUT TEXT AS A STRING WITH NO DUPLICATES, UPPERCASE OR WHITESPACE
+        self._inputText = "".join(set(inputText.replace(" ","").lower()))
+        self._outputText = outputText
+
+    @property
+    def Id(self) -> int:
+        return self._id
+    
+    @property
+    def Keys(self) -> dict:
+        return self._keys
+    @Keys.setter
+    def Keys(self,inputKeys:dict):
+        self._keys = inputKeys
+
+    @property
+    def InputText(self) -> str:
+        return self._inputText
+    @InputText.setter
+    def Keys(self,inputText:str):
+        self._inputText = inputText
+
+    @property
+    def OutputText(self) -> str:
+        return self._outputText
+    @OutputText.setter
+    def Keys(self,outputText:str):
+        self._outputText = outputText
+
 @app.route("/index")
 def Index():
     return render_template("index.html")
