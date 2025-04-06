@@ -4,8 +4,6 @@ from abc import ABCMeta, abstractmethod
 
 app = Flask(__name__)
 
-# TODO: create a builder interface and then a combo builder
-
 class Combo:
     # CONCRETE COMBO CLASS
 
@@ -57,7 +55,6 @@ class ComboBuilder(IBuilder):
 
     def __init__(self):
         self.product = Combo()
-        #id:int,keys:dict,inputText:str,outputText:str
 
     def buildID(self,inputID:int) -> 'ComboBuilder':
         self.product.Id = inputID
@@ -77,6 +74,18 @@ class ComboBuilder(IBuilder):
     
     def getResult(self) -> Combo:
         return self.product
+    
+class Director:
+    # BUILD DIRECTOR
+
+    @staticmethod
+    def constructCombo(id:int,keys:dict,inputText:str,outputText:str) -> Combo:
+        return ComboBuilder()\
+            .buildID(id)\
+            .buildKeys(keys)\
+            .buildInputText(inputText)\
+            .buildOutputText(outputText)\
+            .getResult()
 
 @app.route("/index")
 def Index():
