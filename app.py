@@ -19,6 +19,9 @@ class Combo:
     @property
     def Id(self) -> int:
         return self._id
+    @Id.setter
+    def Id(self,inputId:int):
+        self._id = inputId
     
     @property
     def Keys(self) -> dict:
@@ -48,6 +51,32 @@ class IBuilder(metaclass=ABCMeta):
     @abstractmethod
     def getResult():
         pass
+
+class ComboBuilder(IBuilder):
+    # CONSTRUCTS COMBO
+
+    def __init__(self):
+        self.product = Combo()
+        #id:int,keys:dict,inputText:str,outputText:str
+
+    def buildID(self,inputID:int) -> 'ComboBuilder':
+        self.product.Id = inputID
+        return self
+    
+    def buildKeys(self,inputKeys:dict) -> 'ComboBuilder':
+        self.product.Keys = inputKeys
+        return self
+    
+    def buildInputText(self,inputText:str) -> 'ComboBuilder':
+        self.product.InputText = inputText
+        return self
+    
+    def buildOutputText(self,outputText:str) -> 'ComboBuilder':
+        self.product.OutputText = outputText
+        return self
+    
+    def getResult(self) -> Combo:
+        return self.product
 
 @app.route("/index")
 def Index():
