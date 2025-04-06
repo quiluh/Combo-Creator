@@ -5,6 +5,11 @@ app = Flask(__name__)
 class ICombo:
     # COMBO INTERFACE
 
+    
+
+class Combo(ICombo):
+    # CONCRETE COMBO CLASS
+
     def __init__(self,id:int,keys:dict,inputText:str,outputText:str):
         self._id = id
         self._keys = keys
