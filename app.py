@@ -41,6 +41,14 @@ class Combo:
     def Keys(self,outputText:str):
         self._outputText = outputText
 
+class IBuilder(metaclass=ABCMeta):
+    # BUILDER INTERFACE
+
+    @staticmethod
+    @abstractmethod
+    def getResult():
+        pass
+
 @app.route("/index")
 def Index():
     return render_template("index.html")
