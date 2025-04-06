@@ -8,6 +8,7 @@ var comboContainer;
 function saveElement(element) {
     return {
         tagName:element.tagName.toLowerCase(),
+
         attributes: (() => {
             let attributeObject = {};
 
@@ -66,6 +67,7 @@ function implement(id) {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({"data":data}),
+        
         success: function(response) {
 
             // CHECK IF COMBO IS CURRENTLY IMPLEMENTED AND UPDATES THE TRACKER
