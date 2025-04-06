@@ -2,12 +2,7 @@ from flask import Flask, render_template, request, jsonify, redirect
 
 app = Flask(__name__)
 
-class ICombo:
-    # COMBO INTERFACE
-
-    
-
-class Combo(ICombo):
+class Combo:
     # CONCRETE COMBO CLASS
 
     def __init__(self,id:int,keys:dict,inputText:str,outputText:str):
