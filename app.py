@@ -27,14 +27,14 @@ class Combo:
     def InputText(self) -> str:
         return self._inputText
     @InputText.setter
-    def Keys(self,inputText:str):
+    def InputText(self,inputText:str):
         self._inputText = "".join(set(inputText.replace(" ","").lower()))
 
     @property
     def OutputText(self) -> str:
         return self._outputText
     @OutputText.setter
-    def Keys(self,outputText:str):
+    def OutputText(self,outputText:str):
         self._outputText = outputText
 
 class IBuilder(metaclass=ABCMeta):
