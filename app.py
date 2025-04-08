@@ -98,6 +98,20 @@ def PortHome():
 @app.route("/processImplementation",methods=["POST"])
 def ProcessImplementation():
     data = request.get_json()
+    newCombo = Director.constructCombo(
+        data["data"]["id"],
+        {
+            "leftControl":data["data"]["leftControl"],
+            "leftShift":data["data"]["leftShift"],
+            "leftAlt":data["data"]["leftAlt"],
+
+            "rightControl":data["data"]["rightControl"],
+            "rightShift":data["data"]["rightShift"],
+            "rightAlt":data["data"]["rightAlt"]
+        },
+        data["data"]["inputText"],
+        data["data"]["outputText"]
+    )
     return jsonify(True)
 
 if __name__ == "__main__":
