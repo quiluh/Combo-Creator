@@ -4,6 +4,8 @@ from abc import ABCMeta, abstractmethod
 
 app = Flask(__name__)
 
+#TODO: USE DATA FROM JS TO CHECK WHETHER THE COMBO IS BEING IMPLEMENTED OR UNIMPLEMENTED
+
 class Combo:
     # CONCRETE COMBO CLASS
 
