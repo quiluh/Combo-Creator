@@ -7,14 +7,7 @@ app = Flask(__name__)
 class Combo:
     # CONCRETE COMBO CLASS
 
-    _allCombos = {}
-
-    def __init__(cls,self,id:int,keys:dict,inputText:str,outputText:str):
-        self._id = id
-        self._keys = keys
-        # SAVE INPUT TEXT AS A STRING WITH NO DUPLICATES, UPPERCASE OR WHITESPACE
-        self._inputText = "".join(set(inputText.replace(" ","").lower()))
-        self._outputText = outputText
+    allCombos = {}
 
     @property
     def Id(self) -> int:
@@ -35,7 +28,7 @@ class Combo:
         return self._inputText
     @InputText.setter
     def Keys(self,inputText:str):
-        self._inputText = inputText
+        self._inputText = "".join(set(inputText.replace(" ","").lower()))
 
     @property
     def OutputText(self) -> str:
@@ -56,7 +49,7 @@ class ComboBuilder(IBuilder):
     # CONSTRUCTS COMBO
 
     def __init__(self):
-        self.product = Combo()
+        self.product = Combo(None,None,None,None)
 
     def buildID(self,inputID:int) -> 'ComboBuilder':
         self.product.Id = inputID
@@ -114,6 +107,7 @@ def ProcessImplementation():
         data["data"]["inputText"],
         data["data"]["outputText"]
     )
+    Combo.allCombos[data["data"]["id"]] = newCombo
     return jsonify(True)
 
 if __name__ == "__main__":
