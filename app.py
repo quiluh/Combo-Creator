@@ -7,7 +7,9 @@ app = Flask(__name__)
 class Combo:
     # CONCRETE COMBO CLASS
 
-    def __init__(self,id:int,keys:dict,inputText:str,outputText:str):
+    _allCombos = {}
+
+    def __init__(cls,self,id:int,keys:dict,inputText:str,outputText:str):
         self._id = id
         self._keys = keys
         # SAVE INPUT TEXT AS A STRING WITH NO DUPLICATES, UPPERCASE OR WHITESPACE
