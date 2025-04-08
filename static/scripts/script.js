@@ -48,6 +48,8 @@ function implement(id) {
     // COMBO DATA TO SEND THROUGH TO FLASK APP
     let data = {
         id: id,
+
+        implemented:!trackedCombos[id],
         
         leftControl: document.getElementById(`leftControl${id}`).checked,
         leftShift: document.getElementById(`leftShift${id}`).checked,
@@ -61,31 +63,29 @@ function implement(id) {
         rightAlt: document.getElementById(`rightAlt${id}`).checked,
     }
 
-    if (!trackedCombos[id]) {
-        // SEND DATA THROUGH
-        $.ajax({
-            url: "/processImplementation",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({"data":data}),
-            
-            success: function(response) {
+    // SEND DATA THROUGH
+    $.ajax({
+        url: "/processImplementation",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({"data":data}),
+        
+        success: function(response) {
 
-                // CHECK IF COMBO IS CURRENTLY IMPLEMENTED AND UPDATES THE TRACKER
-                if (trackedCombos.hasOwnProperty(`${id}`)) {
-                    trackedCombos[id] = !trackedCombos[id];
-                } else {
-                    trackedCombos[id] = true;
-                }
-
-                // UPDATE THE HTML/CSS
-                document.getElementById(`${id}`).setAttribute("comboImplemented",trackedCombos[id] ? "true" : "false");
-            },
-            error: function(error) {
-                console.log(error);
+            // CHECK IF COMBO IS CURRENTLY IMPLEMENTED AND UPDATES THE TRACKER
+            if (trackedCombos.hasOwnProperty(`${id}`)) {
+                trackedCombos[id] = !trackedCombos[id];
+            } else {
+                trackedCombos[id] = true;
             }
-        })
-    }
+
+            // UPDATE THE HTML/CSS
+            document.getElementById(`${id}`).setAttribute("comboImplemented",trackedCombos[id] ? "true" : "false");
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    })
 }
 
 // FUNCTION THAT CREATES NEW COMBO
