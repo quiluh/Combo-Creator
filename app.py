@@ -49,7 +49,7 @@ class ComboBuilder(IBuilder):
     # CONSTRUCTS COMBO
 
     def __init__(self):
-        self.product = Combo(None,None,None,None)
+        self.product = Combo()
 
     def buildID(self,inputID:int) -> 'ComboBuilder':
         self.product.Id = inputID
