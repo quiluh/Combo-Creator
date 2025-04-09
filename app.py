@@ -75,6 +75,10 @@ class ComboBuilder(IBuilder):
         self.product.Keys = inputKeys
         return self
     
+    def buildIsImplemented(self,inputIsImplemented:bool) -> 'ComboBuilder':
+        self.product.IsImplemented = inputIsImplemented
+        return self
+    
     def buildInputText(self,inputText:str) -> 'ComboBuilder':
         self.product.InputText = inputText
         return self
@@ -90,10 +94,11 @@ class Director:
     # BUILD DIRECTOR
 
     @staticmethod
-    def constructCombo(id:int,keys:dict,inputText:str,outputText:str) -> Combo:
+    def constructCombo(id:int,keys:dict,isImplemented:bool,inputText:str,outputText:str) -> Combo:
         return ComboBuilder()\
             .buildID(id)\
             .buildKeys(keys)\
+            .buildIsImplemented(isImplemented)\
             .buildInputText(inputText)\
             .buildOutputText(outputText)\
             .getResult()
@@ -120,6 +125,7 @@ def ProcessImplementation():
             "rightShift":data["data"]["rightShift"],
             "rightAlt":data["data"]["rightAlt"]
         },
+        data["data"]["implemented"],
         data["data"]["inputText"],
         data["data"]["outputText"]
     )
