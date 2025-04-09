@@ -11,6 +11,13 @@ class Combo:
 
     allCombos = {}
 
+    def __init__(self):
+        self._id = 0
+        self._keys = {}
+        self._isImplemented = False
+        self._inputText = ""
+        self._outputText = ""
+
     @property
     def Id(self) -> int:
         return self._id
@@ -29,8 +36,8 @@ class Combo:
     def IsImplemented(self) -> bool:
         return self._isImplemented
     @IsImplemented.setter
-    def IsImplemented(self,inputIsInplemented:bool):
-        self._isImplemented = inputIsInplemented
+    def IsImplemented(self,inputIsImplemented:bool):
+        self._isImplemented = inputIsImplemented
 
     @property
     def InputText(self) -> str:
