@@ -26,6 +26,13 @@ class Combo:
         self._keys = inputKeys
 
     @property
+    def IsImplemented(self) -> bool:
+        return self._isImplemented
+    @IsImplemented.setter
+    def IsImplemented(self,inputIsInplemented:bool):
+        self._isImplemented = inputIsInplemented
+
+    @property
     def InputText(self) -> str:
         return self._inputText
     @InputText.setter
