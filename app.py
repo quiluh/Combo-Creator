@@ -44,7 +44,7 @@ class Combo:
         return self._inputText
     @InputText.setter
     def InputText(self,inputText:str):
-        self._inputText = "".join(set(inputText.replace(" ","").lower()))
+        self._inputText = "+".join(set(inputText.replace(" ","").lower()))
 
     @property
     def OutputText(self) -> str:
