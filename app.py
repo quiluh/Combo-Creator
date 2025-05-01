@@ -72,7 +72,8 @@ class ComboBuilder(IBuilder):
         return self
     
     def buildKeys(self,inputKeys:dict) -> 'ComboBuilder':
-        self.product.Keys = "" + "".join([i for i in inputKeys])
+        keys = list(inputKeys.keys())
+        self.product.Keys = "" + "".join([{True:f"{keys[i]}",False:f"+{keys[i]}"}[i==0] for i in range(len(keys)) if inputKeys[keys[i]]])
         return self
     
     def buildIsImplemented(self,inputIsImplemented:bool) -> 'ComboBuilder':
