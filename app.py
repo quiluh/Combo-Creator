@@ -1,28 +1,10 @@
 from flask import Flask, render_template, request, jsonify, redirect
 
+import threading
+
 from abc import ABCMeta, abstractmethod
 
 app = Flask(__name__)
-
-#TODO: IMPLEMENT MULTI THREADING AND KEYBOARD LOGIC
-# import threading
-# import time
-
-# def background_logic():
-#     while True:
-#         # Example logic
-#         for combo_id, combo in Combo.allCombos.items():
-#             if combo.IsImplemented:
-#                 print(f"Combo {combo_id} is implemented.")
-#         time.sleep(5)  # Delay between checks
-
-# if __name__ == "__main__":
-#     # Start background thread
-#     bg_thread = threading.Thread(target=background_logic, daemon=True)
-#     bg_thread.start()
-
-#     # Start Flask app
-#     app.run()
 
 class Combo:
     # CONCRETE COMBO CLASS
@@ -150,5 +132,12 @@ def ProcessImplementation():
     Combo.allCombos[data["data"]["id"]] = newCombo
     return jsonify(True)
 
+def backgroundLogic():
+    pass
+
 if __name__ == "__main__":
+
+    bgLogicThread = threading.Thread(target=backgroundLogic, daemon=True)
+    bgLogicThread.start()
+
     app.run()
