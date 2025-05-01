@@ -72,7 +72,7 @@ class ComboBuilder(IBuilder):
         return self
     
     def buildKeys(self,inputKeys:dict) -> 'ComboBuilder':
-        self.product.Keys = inputKeys
+        self.product.Keys = "" + "".join([i for i in inputKeys])
         return self
     
     def buildIsImplemented(self,inputIsImplemented:bool) -> 'ComboBuilder':
@@ -117,13 +117,13 @@ def ProcessImplementation():
     newCombo = Director.constructCombo(
         data["data"]["id"],
         {
-            "leftControl":data["data"]["leftControl"],
-            "leftShift":data["data"]["leftShift"],
-            "leftAlt":data["data"]["leftAlt"],
+            "left control":data["data"]["leftControl"],
+            "left shift":data["data"]["leftShift"],
+            "left alt":data["data"]["leftAlt"],
 
-            "rightControl":data["data"]["rightControl"],
-            "rightShift":data["data"]["rightShift"],
-            "rightAlt":data["data"]["rightAlt"]
+            "right ctrl":data["data"]["rightControl"],
+            "right shift":data["data"]["rightShift"],
+            "right alt":data["data"]["rightAlt"]
         },
         data["data"]["implemented"],
         data["data"]["inputText"],
