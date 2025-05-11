@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, jsonify, redirect
 
 import threading
 
+import keyboard
+
 from abc import ABCMeta, abstractmethod
 
 app = Flask(__name__)
