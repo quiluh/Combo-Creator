@@ -59,6 +59,14 @@ class Combo:
     def OutputText(self,outputText:str):
         self._outputText = outputText
 
+    def logicLoop(self):
+        keys = [i for i in self.Keys if self.Keys[i]] + self.InputText
+        while True:
+            if all([keyboard.is_pressed(i) for i in keys]):
+                for char in self.OutputText:
+                    keyboard.write(char)
+                    time.sleep(random.uniform(0.05,1))
+
 class IBuilder(metaclass=ABCMeta):
     # BUILDER INTERFACE
 
