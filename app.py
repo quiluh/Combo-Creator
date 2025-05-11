@@ -147,12 +147,6 @@ def ProcessImplementation():
     Combo.allCombos[data["data"]["id"]] = newCombo
     return jsonify(True)
 
-def backgroundLogic():
-    pass
-
 if __name__ == "__main__":
-
-    bgLogicThread = threading.Thread(target=backgroundLogic, daemon=True)
-    bgLogicThread.start()
 
     app.run()
