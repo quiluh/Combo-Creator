@@ -78,10 +78,13 @@ class Combo:
                     time.sleep(random.uniform(0.05,1))
 
     def startThread(self):
-        pass
+        self.stopEvent.clear()
+        self.Thread = threading.Thread(target=self.logicLoop)
+        self.Thread.start()
 
     def stopThread(self):
-        pass
+        self.stopEvent.set()
+        self.Thread.join()
 
 class IBuilder(metaclass=ABCMeta):
     # BUILDER INTERFACE
