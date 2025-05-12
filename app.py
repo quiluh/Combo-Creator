@@ -163,7 +163,11 @@ def ProcessImplementation():
         data["data"]["inputText"],
         data["data"]["outputText"]
     )
-    Combo.allCombos[data["data"]["id"]] = newCombo        
+    Combo.allCombos[data["data"]["id"]] = newCombo
+    if data["data"]["implemented"]:
+        newCombo.startThread()
+    else:
+        newCombo.stopThread()
     return jsonify(True)
 
 if __name__ == "__main__":
