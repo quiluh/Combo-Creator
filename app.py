@@ -75,7 +75,7 @@ class Combo:
             if all([keyboard.is_pressed(i) for i in keys]):
                 for char in self.OutputText:
                     keyboard.write(char)
-                    time.sleep(random.uniform(0.05,1))
+                    time.sleep(random.uniform(0.05,0.2))
 
     def startThread(self):
         print(f"Starting {self.Id}")
