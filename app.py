@@ -72,7 +72,6 @@ class Combo:
     def logicLoop(self):
         keys = self.Keys + self.InputText
         while not self.stopEvent.is_set():
-            print(all([keyboard.is_pressed(i) for i in keys]))
             if all([keyboard.is_pressed(i) for i in keys]):
                 for char in self.OutputText:
                     keyboard.write(char)
