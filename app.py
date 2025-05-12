@@ -24,6 +24,9 @@ class Combo:
         self._inputText = ""
         self._outputText = ""
 
+        self.stopEvent = threading.Event()
+        self._thread = None
+
     @property
     def Id(self) -> int:
         return self._id
@@ -59,13 +62,26 @@ class Combo:
     def OutputText(self,outputText:str):
         self._outputText = outputText
 
+    @property
+    def Thread(self) -> threading.Thread:
+        return self._thread
+    @Thread.setter
+    def Thread(self,inputThread:threading.Thread):
+        self._thread = inputThread
+
     def logicLoop(self):
         keys = [i for i in self.Keys if self.Keys[i]] + self.InputText
-        while True:
+        while not self.stopEvent:
             if all([keyboard.is_pressed(i) for i in keys]):
                 for char in self.OutputText:
                     keyboard.write(char)
                     time.sleep(random.uniform(0.05,1))
+
+    def startThread(self):
+        pass
+
+    def stopThread(self):
+        pass
 
 class IBuilder(metaclass=ABCMeta):
     # BUILDER INTERFACE
@@ -144,7 +160,7 @@ def ProcessImplementation():
         data["data"]["inputText"],
         data["data"]["outputText"]
     )
-    Combo.allCombos[data["data"]["id"]] = newCombo
+    Combo.allCombos[data["data"]["id"]] = newCombo        
     return jsonify(True)
 
 if __name__ == "__main__":
