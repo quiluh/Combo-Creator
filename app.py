@@ -73,6 +73,7 @@ class Combo:
         keys = self.Keys + self.InputText
         while not self.stopEvent.is_set() or not keyboard.is_pressed("`"):
             if all([keyboard.is_pressed(i) for i in keys]):
+                time.sleep(0.5)
                 for char in self.OutputText:
                     keyboard.write(char)
                     time.sleep(random.uniform(0.05,0.2))
