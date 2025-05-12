@@ -70,21 +70,23 @@ class Combo:
         self._thread = inputThread
 
     def logicLoop(self):
-        keys = [i for i in self.Keys if self.Keys[i]] + self.InputText
-        while not self.stopEvent:
+        keys = self.Keys + self.InputText
+        while not self.stopEvent.is_set():
+            print(all([keyboard.is_pressed(i) for i in keys]))
             if all([keyboard.is_pressed(i) for i in keys]):
                 for char in self.OutputText:
                     keyboard.write(char)
                     time.sleep(random.uniform(0.05,1))
 
     def startThread(self):
+        print(f"Starting {self.Id}")
         self.stopEvent.clear()
         self.Thread = threading.Thread(target=self.logicLoop)
         self.Thread.start()
 
     def stopThread(self):
+        print(f"Stopping {self.Id}")
         self.stopEvent.set()
-        self.Thread.join()
 
 class IBuilder(metaclass=ABCMeta):
     # BUILDER INTERFACE
@@ -105,8 +107,7 @@ class ComboBuilder(IBuilder):
         return self
     
     def buildKeys(self,inputKeys:dict) -> 'ComboBuilder':
-        keys = [i for i in inputKeys if inputKeys[i]]
-        self.product.Keys = "+".join(keys)
+        self.product.Keys = [i for i in inputKeys if inputKeys[i]]
         return self
     
     def buildIsImplemented(self,inputIsImplemented:bool) -> 'ComboBuilder':
